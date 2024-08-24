@@ -5,7 +5,9 @@ This library is still unstable. It will be improved through updates
 
 
 Example
-
+	
+ 
+ 	var isCropRequested by remember { mutableStateOf(false) }
 	com.choidev.cropview.CropView(
 	   key = "",
 				imageBitmap = it,
@@ -18,6 +20,26 @@ Example
 				},
 				onRequestCrop = isCropRequested,
 	)
+                 Box(
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(8.dp))
+                        .background(Color.Black)
+                        .fillMaxWidth()
+                        .padding(12.dp)
+                        .height(30.dp)
+                        .clickable {
+                            isCropRequested = true
+                        },
+                    contentAlignment = Alignment.Center,
+                ){
+                    Text(text = "Crop", style = TextStyle(color = Color.White))
+                }
+		
+
+  - Add
+  ```
+	implementation ("com.github.supremehyo:Compose-CropView:v1.0.5")
+  ```
 
 - Forward the image you want to crop to the ImageBitMap.
 
