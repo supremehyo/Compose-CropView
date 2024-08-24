@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.jetbrains.kotlin.android)
+  //  alias(libs.plugins.jetbrains.kotlin.android)
+    id("org.jetbrains.kotlin.android") version "1.9.10"
     id("maven-publish")
 }
 
@@ -31,6 +32,12 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.3"
+    }
 }
 
 dependencies {
@@ -57,7 +64,7 @@ afterEvaluate {
             register<MavenPublication>("release") {
                 groupId = "com.choidev"
                 artifactId = "cropview"
-                version = "1.0"
+                version = "v1.0.5"
 
                 afterEvaluate {
                     from(components["release"])

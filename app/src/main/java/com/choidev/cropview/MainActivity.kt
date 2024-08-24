@@ -10,7 +10,11 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.core.graphics.createBitmap
 import com.choidev.cropview.ui.theme.CropViewTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,11 +23,18 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             CropViewTheme {
+
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                 CropView(
+                     modifier = Modifier.padding(innerPadding),
+                     imageBitmap =            createBitmap(100,100).asImageBitmap(),
+                     cropStrokeColor = Color.Black,
+                     cropStrokeWidth = 12.dp,
+                     onCrop =  { imageBitmap, b, s ->
+
+                     },
+                     onRequestCrop = false
+                 )
                 }
             }
         }
